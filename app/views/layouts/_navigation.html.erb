@@ -23,4 +23,7 @@
     <%= link_to('Sign up', new_user_registration_path)  %>
     </li>
   <% end %>
+  <% if user_signed_in? %>
+    <%= image_tag @user.gravatar_url %>
+  <% end %>
 </ul>
