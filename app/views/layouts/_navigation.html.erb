@@ -24,6 +24,6 @@
     </li>
   <% end %>
   <% if user_signed_in? %>
-    <%= image_tag @user.gravatar_url %>
+    <%= gravatar_for @user %>
   <% end %>
 </ul>

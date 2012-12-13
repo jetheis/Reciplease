@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   rolify
-  is_gravtastic!
   
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
