@@ -1,6 +1,6 @@
 <div class="container"
     <div id="sidebar">
-      <a href="profile.html"><img src="http://people.nas.nasa.gov/~kolano/images/homer_pieman.jpg" width="280" height="280"/></a>
+      <%= image_tag @user.gravatar_url :size => 250 %>
       <h1><%= @user.name %></h1>
       <p class="slogan">Reciplease Fanatic</p>
       
