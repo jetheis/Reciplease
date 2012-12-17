@@ -15,6 +15,10 @@
     <%= link_to('Edit account', edit_user_registration_path) %>
     </li>
     
+    <% if is_gravtastic %>
+    	<%= puts "HELLO" %>
+    <% end %>
+    
     <% if current_user.has_role? :admin %>
       <li>
       <%= link_to('Admin', users_path) %>
