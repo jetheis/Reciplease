@@ -16,10 +16,10 @@
     </li>
     
     <li>
-    <%= image_tag current_user.gravatar_url :size => 40 %>
+    <%= image_tag @user.gravatar_url :size => 40 %>
     </li>
     
-    <% if current_user.has_role? :admin %>
+    <% if @user.has_role? :admin %>
       <li>
       <%= link_to('Admin', users_path) %>
       </li>
