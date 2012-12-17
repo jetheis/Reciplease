@@ -14,11 +14,7 @@
     <li>
     <%= link_to('Edit account', edit_user_registration_path) %>
     </li>
-    <% if is_gravtastic %>
-    	<li>
-    	<%= image_tag @user.gravatar_url %>
-    	</li>
-    <% end %>
+    
     <% if current_user.has_role? :admin %>
       <li>
       <%= link_to('Admin', users_path) %>
