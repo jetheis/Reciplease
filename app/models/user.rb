@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Gravtastic
-  gravtastic :secure => true,
+  gravtastic  :secure => true,
               :filetype => :gif
   
   rolify
