@@ -7,6 +7,11 @@
       <ul>
         <li><a href="#"><%= @user.name %>'s Favorite Reipes</a><br />Recipe's to die for!</li>
         <li><a href="#">Full Bio</a><br />I think, therefore I cook...</li>
+        <% if @user == current_user %>
+        	<li>
+    		<%= link_to('Edit account', edit_user_registration_path) %>
+    		</li>
+    	<% end %>
       </ul>
     </div>
 

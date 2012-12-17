@@ -8,11 +8,7 @@
     
     <li>
     <%# Edit the path variable to something more relevant %>
-    <%= link_to(current_user.name, edit_user_registration_path)%>
-    </li>
-    
-    <li>
-    <%= link_to('Edit account', edit_user_registration_path) %>
+    <%= link_to(current_user.name, user_path(current_user))%>
     </li>
     
     <% if current_user.has_role? :admin %>
