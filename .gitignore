@@ -1,3 +1,5 @@
 Gemfile.lock
 .project
 tmp/*
+log/*
+db/development.sqlite3

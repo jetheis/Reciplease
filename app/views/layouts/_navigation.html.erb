@@ -1,22 +1,18 @@
 <%= link_to "Reciplease", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>        
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login', new_user_session_path)  %>  
-    </li>
-  <% end %>
+<ul class="nav pull-right">
   
   <% if user_signed_in? %>
     <li>
-    <%= link_to('Edit account', edit_user_registration_path) %>
+    <%= image_tag current_user.gravatar_url :size => 40 %>
     </li>
     
     <li>
-    <%= image_tag current_user.gravatar_url :size => 40 %>
+    <%# Edit the path variable to something more relevant %>
+    <%= link_to(current_user.name, edit_user_registration_path)%>
+    </li>
+    
+    <li>
+    <%= link_to('Edit account', edit_user_registration_path) %>
     </li>
     
     <% if current_user.has_role? :admin %>
@@ -27,6 +23,16 @@
   <% else %>
     <li>
     <%= link_to('Sign up', new_user_registration_path)  %>
+    </li>
+  <% end %>
+  
+  <% if user_signed_in? %>
+    <li>
+    <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>        
+    </li>
+  <% else %>
+    <li>
+    <%= link_to('Login', new_user_session_path)  %>  
     </li>
   <% end %>
 </ul>
