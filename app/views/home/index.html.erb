@@ -1,8 +1,46 @@
 <div class="container-narrow" style="margin: 0 auto; max-width: 700px">
-	<div class="jumbotron">
-		<h1 style="text-align: center">Welcome to the<br>Reciplease Development site!</h1>
-		<p class="lead">
-			The Reciplease Project is an attempt to bring the fun of cooking to a wider audience. There are plenty of websites that provide recipes, but not many that help you make recipes your own. That's the goal of Reciplease: to help you create, perfect, and share your ideas about cooking.
-		</p>
-	</div>
+	<% if not user_signed_in? %>
+		<div class="jumbotron" style="text-align: center">
+			<h1 style="text-align: center">Welcome to the<br>Reciplease Development site!</h1>
+			<p class="lead">
+				The Reciplease Project is an attempt to bring the fun of cooking to a wider audience. There are plenty of websites that provide recipes, but not many that help you make recipes your own. That's the goal of Reciplease: to help you create, perfect, and share your ideas about cooking.
+			</p>
+				<%= link_to('Sign up', new_user_registration_path, :class => "btn btn-large btn-success") %>
+		</div>	
+	<% else %>
+		<!--Carousel--> 
+		<div id="myCarousel" class="carousel slide">
+			<div class="carousel-inner">
+			  <div class="active item">
+				<img src="http://placehold.it/1200x480">
+				<div class = "carousel-caption">
+				  <h4>Image1</h4>
+				  <p>
+					This is a placeholder!
+				  </p>
+				</div>
+			  </div>
+			  <div class="item">
+				<img src="http://placehold.it/1200x480">
+				<div class = "carousel-caption">
+				  <h4>Image2</h4>
+				  <p>
+					This is a placeholder!
+				  </p>
+				</div>
+			  </div>
+			  <div class="item">
+				<img src="http://placehold.it/1200x480">
+				<div class = "carousel-caption">
+				  <h4>Image2</h4>
+				  <p>
+					This is a placeholder!
+				  </p>
+				</div>
+			  </div>
+			</div>
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	<% end %>
 </div>
