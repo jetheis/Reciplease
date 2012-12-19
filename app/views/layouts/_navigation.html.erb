@@ -10,7 +10,9 @@
     <%# Edit the path variable to something more relevant %>
     <%= link_to(current_user.name, user_path(current_user))%>
     </li>
-    
+    <li>
+  	<%= text_field_tag("Search")%>
+  	</li>
     <% if current_user.has_role? :admin %>
       <li>
       <%= link_to('Admin', users_path) %>
