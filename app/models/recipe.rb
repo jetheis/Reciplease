@@ -2,7 +2,7 @@ class Recipe < ActiveRecord::Base
   
   ## Validations
   validates_presence_of :name, :owner, :description, :instructions
-  validates_uniqueness_of :name, :case_sensitive => false, :scope => [:owner, :base]
+  validates_uniqueness_of :name, :case_sensitive => false, :scope => [:owner_id, :base_id]
 
   ## Relationships
   belongs_to :owner, :class_name => "User"
@@ -15,5 +15,5 @@ class Recipe < ActiveRecord::Base
   has_many :ingredient_descs, :through => :ingredients
   
   ## Accessibile attributes
-  attr_accessible :name, :owner, :description, :instructions, :base, :forks, :ingredients 
+  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients 
 end

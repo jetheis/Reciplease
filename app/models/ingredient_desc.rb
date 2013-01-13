@@ -11,6 +11,6 @@ class Ingredient_Desc < ActiveRecord::Base
   has_many :recipes, :through => :ingredients
   
   ## Accessible attributes
-  attr_accessible :name, :description, :nutrition
+  attr_accessible :name, :description#, :nutrition
   # todo: nutrition
 end
