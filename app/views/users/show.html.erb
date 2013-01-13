@@ -1,4 +1,4 @@
-<div class="container"
+<div class="container">
     <div id="sidebar">
       <%= image_tag @user.gravatar_url :size => 250 %>
       <h1><%= @user.name %></h1>
@@ -7,9 +7,18 @@
       </p>
       
       <ul>
-      	<li></li>
-        <li><a href="#"><%= @user.name %>'s Favorite Recipes</a><br />Recipe's to die for!</li>
-        <li><a href="#">Full Bio</a><br />I think, therefore I cook...</li>
+      	<li class="active"><a href="#bio" data-toggle="tab">
+        	Full Bio</a><br />I think, therefore I cook...
+        </li>
+        	
+      	<li><a href="#recipes" data-toggle="tab">
+      		<%= @user.name %>'s Recipes</a><br />
+      	</li>
+      	
+        <li><a href="#fav_recipes" data-toggle="tab">
+        	<%= @user.name %>'s Favorite Recipes</a><br />Recipe's to die for!
+        </li>
+        
         <% if @user == current_user %>
         	<li>
     		<%= link_to('Edit account', edit_user_registration_path) %>
@@ -18,9 +27,17 @@
       </ul>
     </div>
     
-	<div id="content">
-		<%#= render :partial => "user_bio" %>
-		<%= render 'user_recipes' %>
+	<div class="tab-content">
+		<div class="tab-pane active" id="bio">
+			<%= render 'user_bio' %></div>
+			
+		<div class="tab-pane" id="fav_recipes">
+			<%= render 'user_favorite_recipes'%></div>
+			
+		<div class="tab-pane" id="recipes">
+			<%= render 'user_recipes' %></div>
+	</div>
+	<div class="">
 		<%= social_share_button_tag(@user.name) %>
 	</div>
 </div> 
