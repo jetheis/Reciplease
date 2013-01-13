@@ -1,5 +1,6 @@
 Reciplease::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  require 'tlsmail'
 
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -61,8 +62,24 @@ Reciplease::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  # Mail server settings
-  config.action_mailer.default_url_options = { :host => 'reciplease.herokuapp.com:8080' }
+  # Mail server settings  
+    
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)   
+  ActionMailer::Base.delivery_method = :smtp   
+  ActionMailer::Base.perform_deliveries = true   
+  ActionMailer::Base.raise_delivery_errors = true   
+  ActionMailer::Base.smtp_settings = {   
+    :enable_starttls_auto => true,     
+    :address            => 'smtp.gmail.com',   
+    :port               => 587,   
+    :tls                => true,   
+    :domain             => 'reciplease.herokuapp.com',    
+    :authentication     => :plain,   
+    :user_name          => ENV[EMAIL_SERVER_USER],   
+    :password           => ENV[EMAIL_SERVER_PASS]
+  }   
+    
+ config.action_mailer.default_url_options = { :host => 'reciplease.herokuapp.com' }   
   
 
   # Log the query plan for queries taking more than this (works
