@@ -2,10 +2,13 @@
     <div id="sidebar">
       <%= image_tag @user.gravatar_url :size => 250 %>
       <h1><%= @user.name %></h1>
-      <p class="slogan">Reciplease Fanatic</p>
+      <p class="slogan">
+      	<%= ["Food Fanatic", "Cool Cook", "Rad Recipleaser", ].sample %>
+      </p>
       
       <ul>
-        <li><a href="#"><%= @user.name %>'s Favorite Reipes</a><br />Recipe's to die for!</li>
+      	<li></li>
+        <li><a href="#"><%= @user.name %>'s Favorite Recipes</a><br />Recipe's to die for!</li>
         <li><a href="#">Full Bio</a><br />I think, therefore I cook...</li>
         <% if @user == current_user %>
         	<li>
@@ -14,14 +17,10 @@
     	<% end %>
       </ul>
     </div>
-
-    <div id="content">
-      <p><b>Email:</b> <%= @user.email %></p>
-      <p><b>NEED MORE STUFF HERE LOL</b></p>
-      
-      <h3><%= @user.name %>'s Recipes</h3>
-      <p class="credits">2012 Reciplease<br/></p>
-      
-      <%= social_share_button_tag(@user.name) %>
-    </div>
+    
+	<div id="content">
+		<%#= render :partial => "user_bio" %>
+		<%= render 'user_recipes' %>
+		<%= social_share_button_tag(@user.name) %>
+	</div>
 </div> 
