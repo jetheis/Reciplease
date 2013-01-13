@@ -71,8 +71,8 @@ Reciplease::Application.configure do
     :port               => 587,    
     :domain             => 'reciplease.herokuapp.com',    
     :authentication     => :plain,   
-    :user_name          => ENV[EMAIL_SERVER_USER],   
-    :password           => ENV[EMAIL_SERVER_PASS]
+    :user_name          => ENV['EMAIL_SERVER_USER'],   
+    :password           => ENV['EMAIL_SERVER_PASS']
   }   
     
  config.action_mailer.default_url_options = { :host => 'reciplease.herokuapp.com' }   
