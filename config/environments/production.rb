@@ -62,7 +62,7 @@ Reciplease::Application.configure do
   config.active_support.deprecation = :notify
   
   # Mail server settings
-  config.default_url_options[:host] = 'reciplease.herokuapp.com:8080'
+  config.action_mailer.default_url_options = { :host => 'reciplease.herokuapp.com:8080' }
   
 
   # Log the query plan for queries taking more than this (works
