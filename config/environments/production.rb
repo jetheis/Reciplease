@@ -48,9 +48,6 @@ Reciplease::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
-  # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
-
   # Enable threaded mode
   # config.threadsafe!
 
@@ -61,8 +58,22 @@ Reciplease::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  # Mail server settings
-  config.action_mailer.default_url_options = { :host => 'reciplease.herokuapp.com:8080' }
+  # Mail server settings  
+  ActionMailer::Base.delivery_method = :smtp   
+  ActionMailer::Base.perform_deliveries = true   
+  ActionMailer::Base.raise_delivery_errors = true   
+  ActionMailer::Base.smtp_settings = {   
+    :enable_starttls_auto => true,     
+    :address            => 'smtp.gmail.com',   
+    :port               => 587,    
+    :domain             => 'reciplease-test.herokuapp.com',    
+    :authentication     => :plain,   
+    :user_name          => ENV['EMAIL_SERVER_USER'],   
+    :password           => ENV['EMAIL_SERVER_PASS']
+  }   
+    
+ #TODO: Update this to reciplease, instead of reciplease-test
+ config.action_mailer.default_url_options = { :host => 'reciplease-test.herokuapp.com' }   
   
 
   # Log the query plan for queries taking more than this (works

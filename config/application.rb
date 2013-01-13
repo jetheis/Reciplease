@@ -37,7 +37,7 @@ module Reciplease
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-	config.filter_parameters += [:password, :password_confirmation]
+	  config.filter_parameters += [:password, :password_confirmation]
 
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
