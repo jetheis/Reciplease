@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   rolify
   
   validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
+  validates_uniqueness_of :email, :case_sensitive => false
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
