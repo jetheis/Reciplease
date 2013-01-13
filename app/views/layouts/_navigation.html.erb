@@ -2,17 +2,20 @@
 <ul class="nav pull-right">
   
   <% if user_signed_in? %>
+    <form class="navbar-search pull-left">
+  		<input type="text" class="search-query" placeholder="Search">
+	</form>
+	
+	<li class="divider-vertical"></li>
+	
     <li>
     <%= image_tag current_user.gravatar_url :size => 40 %>
     </li>
     
     <li>
-    <%# Edit the path variable to something more relevant %>
     <%= link_to(current_user.name, user_path(current_user))%>
     </li>
-    <li>
-  	<%= text_field_tag("Search")%>
-  	</li>
+
     <% if current_user.has_role? :admin %>
       <li>
       <%= link_to('Admin', users_path) %>
