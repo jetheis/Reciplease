@@ -17,8 +17,10 @@
     	<% end %>
       </ul>
     </div>
+    
 	<div id="content">
 		<%#= render :partial => "user_bio" %>
 		<%= render 'user_recipes' %>
+		<%= social_share_button_tag(@user.name) %>
 	</div>
 </div> 
