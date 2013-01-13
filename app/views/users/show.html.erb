@@ -1,5 +1,18 @@
-<div class="container">
-    <div id="sidebar">
+<div class="row">
+	<div class="span7">
+		<div class="tab-content">
+			<div class="tab-pane active" id="bio">
+				<%= render 'user_bio' %></div>
+				
+			<div class="tab-pane" id="fav_recipes">
+				<%= render 'user_favorite_recipes'%></div>
+				
+			<div class="tab-pane" id="recipes">
+				<%= render 'user_recipes' %></div>
+		</div>
+	</div>
+	
+    <div class="span3" id="sidebar">
       <%= image_tag @user.gravatar_url :size => 250 %>
       <h1><%= @user.name %></h1>
       <p class="slogan">
@@ -12,7 +25,7 @@
         </li>
         	
       	<li><a href="#recipes" data-toggle="tab">
-      		<%= @user.name %>'s Recipes</a><br />
+      		<%= @user.name %>'s Recipes</a><br />Makin' Bacon Pancakes
       	</li>
       	
         <li><a href="#fav_recipes" data-toggle="tab">
@@ -25,19 +38,10 @@
     		</li>
     	<% end %>
       </ul>
-    </div>
-    
-	<div class="tab-content">
-		<div class="tab-pane active" id="bio">
-			<%= render 'user_bio' %></div>
-			
-		<div class="tab-pane" id="fav_recipes">
-			<%= render 'user_favorite_recipes'%></div>
-			
-		<div class="tab-pane" id="recipes">
-			<%= render 'user_recipes' %></div>
-	</div>
-	<div class="">
+    </div>    
+</div> 
+<div class="row">
+	<div class="span1">
 		<%= social_share_button_tag(@user.name) %>
 	</div>
-</div> 
+</div>
