@@ -6,7 +6,9 @@ class Ingredient < ActiveRecord::Base
   validates_presence_of :recipe, :ingredient_desc, :quantity, :unit
   # You can only specify a type of ingredient once per recipe
   validates_uniqueness_of :recipe, :scope => [:ingredient_desc]
-  numericality :quantity, :greater_than => 0
+  
+  #TODO: This causes a crash... what is numericality? - Rob
+  # numericality :quantity, :greater_than => 0
 
   ## Relationships
   belongs_to :recipe
