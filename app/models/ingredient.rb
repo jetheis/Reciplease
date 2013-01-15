@@ -12,6 +12,7 @@ class Ingredient < ActiveRecord::Base
 
   ## Relationships
   belongs_to :recipe
+  #TODO: Should this be belong to? or has? - Rob
   belongs_to :ingredient_desc
   
   ## Accessible attributes
