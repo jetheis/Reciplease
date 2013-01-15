@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include Gravtastic
+  acts_as_commentable
+  
   gravtastic  :secure => true,
               :filetype => :gif
   
