@@ -1,6 +1,6 @@
 <h1>Editing recipe</h1>
 
-<%= simple_form_for @recipe, :url => { :action => "edit" }, :html => {:class => "nifty_form"} do |f| %>
+<%= simple_form_for @recipe, :url => { :action => "update" }, :html => {:class => "nifty_form"} do |f| %>
   <%= f.input :name, :label => 'Recipe name' %>
   <%= f.label :Description %>
   <%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
@@ -10,9 +10,7 @@
   <%= f.text_area :instructions, :cols => 30, :rows => 5 %>
   </div> 
   
-  <%# TODO implement editing %>
-  <p>Sorry, editing is disabled right now. </p>
-  <%= f.button :submit, :disabled => true =%>
+  <%= f.button :submit =%>
 <% end %>
 
 <%= link_to 'Show', @recipe %> |
