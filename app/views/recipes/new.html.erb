@@ -12,6 +12,17 @@
     <%# i.button %>
   <%# end %>
   
+  <% form_tag invites_path do %>
+    <%= error_messages_for :object => @recipe.ingredients %>
+    <ul id="invite-list">
+      <%= render @invites %>
+    </ul>
+    <div>
+      <%= submit_tag "Send Invite" %>
+      <%= link_to "Add Another", "#add", :id => "add-another" %>
+    </div>
+  <% end %>
+  
   <div class="control-group string required">
   <%= f.label :instructions, :required => true %>
   <%= f.text_area :instructions, :cols => 30, :rows => 5 %>
