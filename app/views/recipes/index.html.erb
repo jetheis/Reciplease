@@ -9,6 +9,15 @@
 
 <% @recipes.each do |recipe| %>
   <tr>
+    <td><img src="http://lorempixel.com/g/140/85/food" alt="recipe thumbnail">
+    <td>
+      <h4><%= recipe.name %></h4>
+      <p>By <%= link_to recipe.owner.name, recipe.owner %></p>
+    </td>
+    <td>
+      <p><%= recipe.description %></p>
+    </td>
+    </td>
     <td><%= link_to 'Show', recipe %></td>
     <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
     <td><%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %></td>

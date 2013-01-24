@@ -1,6 +1,19 @@
 <h1>Editing recipe</h1>
 
-<%= render 'form' %>
+<%= simple_form_for @recipe, :url => { :action => "edit" }, :html => {:class => "nifty_form"} do |f| %>
+  <%= f.input :name, :label => 'Recipe name' %>
+  <%= f.label :Description %>
+  <%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
+  
+  <div class="control-group string required">
+  <%= f.label :instructions, :required => true %>
+  <%= f.text_area :instructions, :cols => 30, :rows => 5 %>
+  </div> 
+  
+  <%# TODO implement editing %>
+  <p>Sorry, editing is disabled right now. </p>
+  <%= f.button :submit, :disabled => true =%>
+<% end %>
 
 <%= link_to 'Show', @recipe %> |
 <%= link_to 'Back', recipes_path %>
