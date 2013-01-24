@@ -1,5 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+<div id="image" class="span5" style="float:right">
+  <img src="http://lorempixel.com/g/300/300/food/300x300" alt="recipe picture">
+</div>
 
+<h2><%= @recipe.name %></h2>
+<h4>By <%= link_to @recipe.owner.name, @recipe.owner %></h4>
+
+<h5>Ingredients</h5>
+<ul>
+  <li>TODO</li>
+</ul>
+
+<h5>Description</h5>
+<p><%= @recipe.description %></p>
+
+<h5>Instructions</h5>
+<p><%= @recipe.instructions %></p>
+
+<%# TODO sanitize html, or should that be done on creation? %>
+<%# TODO recipe edit permissions %>
+<%# TODO recipe fork link %>
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
