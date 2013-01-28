@@ -1,4 +1,4 @@
-<%= fields_for "recipe[ingredients_attributes][]", invite do |i| %>
+<%= fields_for "recipe[ingredients_attributes][]", ingredient do |i| %>
   <li>
     <%= link_to("Remove", "#delete", :class => "delete-ingredient") %>
     <%= i.label :full_name, "Full Name" %>
