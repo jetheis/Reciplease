@@ -25,6 +25,6 @@
 <%= link_to 'Back', recipes_path %>
 
 <p><p>
-<%= render 'comment_form' %>
+<%= comments_for @recipe %>
 <%= yield %>
 </p>

@@ -23,4 +23,7 @@ gem "simple_form", ">= 2.0.3"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "gravtastic"
 gem "social-share-button"
+gem 'acts_as_commentable'
 gem 'opinio'
+
+gem "kaminari"

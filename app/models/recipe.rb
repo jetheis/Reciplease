@@ -1,6 +1,7 @@
 class Recipe < ActiveRecord::Base
   
-  acts_as_commentable
+  # A commenting gem, simplifies the process
+  opinio_subjectum
   
   ## Validations
   validates_presence_of :name, :owner, :description, :instructions
