@@ -14,7 +14,7 @@ class AddRecipeIngredient < ActiveRecord::Migration
     create_table(:ingredients, :id => false) do |t|
       t.references :recipe
       t.references :ingredient_desc
-      t.column :quantity, :number, :null => false
+      t.column :quantity, :float, :null => false
       t.column :unit, :string, :null => false
       
       t.timestamps
