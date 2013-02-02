@@ -13,6 +13,9 @@ class Recipe < ActiveRecord::Base
   # included ingredient descriptions can be accessed indirectly through the many-to-many table 'ingredient'
   has_many :ingredients
   has_many :ingredient_descs, :through => :ingredients
+
+  # ratings
+  has_many :ratings
   
   ## Accessibile attributes
   attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients 
