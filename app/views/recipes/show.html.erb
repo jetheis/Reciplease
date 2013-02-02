@@ -21,5 +21,7 @@
 <%# TODO sanitize html, or should that be done on creation? %>
 <%# TODO recipe edit permissions %>
 <%# TODO recipe fork link %>
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<% if @recipe.owner == current_user %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<% end %>
 <%= link_to 'Back', recipes_path %>

@@ -1,30 +1,26 @@
-<h1>Listing recipes</h1>
+<div class="row">
+  <div class="span3"><h1>Listing recipes</h1></div>
+  <div class="span8"></div>
+  <div class="span1"><%= link_to 'New Recipe', new_recipe_path, :class=>"btn btn-success" %></div>
+</div>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><img src="http://lorempixel.com/g/140/85/food" alt="recipe thumbnail">
-    <td>
-      <h4><%= recipe.name %></h4>
-      <p>By <%= link_to recipe.owner.name, recipe.owner %></p>
-    </td>
-    <td>
-      <p><%= recipe.description %></p>
-    </td>
-    </td>
-    <td><%= link_to 'Show', recipe %></td>
-    <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Recipe', new_recipe_path %>
+<ul class="thumbnails">
+  <!-- TODO Change this loop over all recipes to loop over top recipes limiting number of results -->
+  <% @recipes.each do |recipe| %>
+    <li class="span3">
+      <div class="thumbnail">
+        <%= link_to image_tag("http://lorempixel.com/g/300/200/food", :border=>0, :alt=>'recipe thumbnail', :title=>''),
+             recipe, :class=>"thumbnail" %>
+        
+        <h3 style="display:inline"><%= recipe.name %></h3>
+        <p style="display:inline">by <%= link_to recipe.owner.name, recipe.owner, :style=>"text-decoration: none" %></p>
+        <p><%= recipe.description %></p>
+        
+        <% if recipe.owner == current_user %>
+          <%= link_to 'Edit', edit_recipe_path(recipe), :style=>"text-decoration: none" %>
+          <%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete, :style=>"text-decoration: none" %>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
