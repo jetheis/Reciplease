@@ -1,5 +1,7 @@
 class Recipe < ActiveRecord::Base
   
+  acts_as_commentable
+  
   ## Validations
   validates_presence_of :name, :owner, :description, :instructions
   validates_uniqueness_of :name, :case_sensitive => false, :scope => [:owner_id, :base_id]
