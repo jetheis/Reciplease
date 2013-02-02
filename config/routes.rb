@@ -1,6 +1,11 @@
 Reciplease::Application.routes.draw do
-  resources :recipes
+  opinio_model
 
+  resources :recipes
+  resources :recipes do
+    opinio
+  end
+  
   authenticated :user do
     root :to => 'home#home'
   end
