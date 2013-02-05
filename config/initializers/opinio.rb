@@ -12,7 +12,7 @@ Opinio.setup do |config|
   # config.accept_replies = true
   
   # Here you can change the method called to check who is the current user
-  config.current_user_method = :current_user
+  config.current_user_method = :get_current_user
 
   # Strip html tags on save comment
   config.strip_html_tags_on_save = true
