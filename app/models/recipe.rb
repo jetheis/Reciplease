@@ -15,7 +15,15 @@ class Recipe < ActiveRecord::Base
   has_many :ingredient_descs, :through => :ingredients
   
   ## Accessibile attributes
-  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients
+  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients, :image
   # we should limit the length of :description 
+  
+  attr_accessor :image_file_name, :image_content_type, :image_file_size, :image_updated_at
+  
+  has_attached_file :image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
   
 end
