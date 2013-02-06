@@ -7,7 +7,7 @@
   <ul class="thumbnails">
     <!-- TODO Change this loop over all recipes to loop over top recipes limiting number of results -->
     <% @recipes.each do |recipe| %>
-      <% render :partial => "recipes/thumbnail_block", :locals => { :recipe => recipe } %>
+      <%= render "recipes/thumbnail_block", :recipe => recipe %>
     <% end %>
   </ul>
 </div>
