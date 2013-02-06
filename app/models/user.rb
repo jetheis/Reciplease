@@ -1,14 +1,12 @@
 class User < ActiveRecord::Base
   include Gravtastic
-  acts_as_commentable
-  
   gravtastic  :secure => true,
               :filetype => :gif
   
   rolify
   
   validates_presence_of :name
-  validates_uniqueness_of :email, :case_sensitive => false
+  validates_uniqueness_of :email, :case_sensitive => false  
   
   # has_many :recipes, :foreign_key => "owner_id"
   

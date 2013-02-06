@@ -18,5 +18,7 @@ class Recipe < ActiveRecord::Base
   has_many :ratings
   
   ## Accessibile attributes
-  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients 
+  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients
+  # we should limit the length of :description 
+  
 end

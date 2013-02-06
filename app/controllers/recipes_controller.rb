@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     @recipes = Recipe.all
+    @top_recipes = nil
 
     respond_to do |format|
       format.html # index.html.erb
@@ -129,4 +130,5 @@ class RecipesController < ApplicationController
       end
     end
   end
+
 end
