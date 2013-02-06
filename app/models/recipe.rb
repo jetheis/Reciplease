@@ -1,8 +1,5 @@
 class Recipe < ActiveRecord::Base
   
-  # A commenting gem, simplifies the process
-  opinio_subjectum
-  
   ## Validations
   validates_presence_of :name, :owner, :description, :instructions
   validates_uniqueness_of :name, :case_sensitive => false, :scope => [:owner_id, :base_id]
@@ -20,4 +17,5 @@ class Recipe < ActiveRecord::Base
   ## Accessibile attributes
   attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients
   # we should limit the length of :description 
+  
 end

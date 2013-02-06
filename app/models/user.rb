@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   include Gravtastic
-
   gravtastic  :secure => true,
               :filetype => :gif
   
