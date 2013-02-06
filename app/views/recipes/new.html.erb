@@ -6,9 +6,14 @@
   <%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
 
   <div class="control-group string required">
-  <%= f.label :instructions, :required => true %>
-  <%= f.text_area :instructions, :cols => 30, :rows => 5 %>
+  	<%= f.label :instructions, :required => true %>
+  	<%= f.text_area :instructions, :cols => 30, :rows => 5 %>
   </div> 
+  
+  <div class="field">
+  	<%= f.label :image %>
+  	<%= f.file_field :image %>
+  </div> <br />
   
   <%= f.button :submit =%>
 <% end %>
