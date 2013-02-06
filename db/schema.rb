@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130206231143) do
 
-  create_table "fav_recipe", :force => true do |t|
+  create_table "fav_recipes", :force => true do |t|
     t.integer "user_id"
     t.integer "recipe_id"
   end
