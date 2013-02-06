@@ -5,6 +5,7 @@
       <p>
         <%= f.text_area :body %>
       </p>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= hidden_field_tag :commentable_id, commentable.id %>
       <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
       <%= f.submit t('opinio.actions.add') %>

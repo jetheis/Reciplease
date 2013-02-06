@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include Gravtastic
+  
+  has_many :comments, dependent: :destroy
 
   gravtastic  :secure => true,
               :filetype => :gif

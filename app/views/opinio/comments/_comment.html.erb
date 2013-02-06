@@ -1,6 +1,6 @@
 <% reply = defined?(reply) ? reply : false %>
 <li id="comment_<%= comment.id %>">
-  <span>User: <%= comment.owner %></span>
+  <span>User: <%= User.find(comment.user_id).name %></span>
   <p>
     <%= simple_format(comment.body) %>
   </p>

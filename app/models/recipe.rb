@@ -20,4 +20,5 @@ class Recipe < ActiveRecord::Base
   ## Accessibile attributes
   attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients
   # we should limit the length of :description 
+  
 end
