@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
   rolify
   
   validates_presence_of :name
-  validates_uniqueness_of :email, :case_sensitive => false  
+  validates_uniqueness_of :email, :case_sensitive => false
   
-  # has_many :recipes, :foreign_key => "owner_id"
+  has_many :fav_recipes
+  has_many :recipes, :through => :fav_recipes
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
