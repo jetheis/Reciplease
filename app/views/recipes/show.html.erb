@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div id="image" class="span5" style="float:right">
-  <%= @recipe.image.url(:medium) %>
+  <%= image_tag @recipe.image.url(:medium) %>
 </div>
 
 <h2><%= @recipe.name %></h2>
