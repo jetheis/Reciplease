@@ -22,8 +22,6 @@ class Recipe < ActiveRecord::Base
   attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients, :image
   # TODO we should limit the length of :description 
   
-  attr_accessor :image_file_name, :image_content_type, :image_file_size, :image_updated_at
-  
   has_attached_file :image, styles: {
     thumb: '100x100',
     square: '200x200',

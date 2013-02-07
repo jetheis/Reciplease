@@ -1,9 +1,9 @@
 class AddImageToRecipes < ActiveRecord::Migration
   def self.up
-    add_attachment :recipe, :image
+    add_attachment :recipes, :image
   end
 
   def self.down
-    remove_attachment :recipe, :image
+    remove_attachment :recipes, :image
   end
 end
