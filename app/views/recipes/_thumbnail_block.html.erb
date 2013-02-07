@@ -1,6 +1,6 @@
 <li class="span3">
   <div class="thumbnail" style="height: 350px">
-    <%= link_to image_tag("http://lorempixel.com/g/300/200/food", :border=>0, :alt=>'recipe thumbnail', :title=>''),
+    <%= link_to image_tag(recipe.image.url(:medium), :border=>0, :alt=>'recipe thumbnail', :title=>''),
          recipe, :class=>"thumbnail" %>
     
     <h3 style="display:inline"><%= recipe.name %></h3>
