@@ -6,4 +6,5 @@ Reciplease::Application.routes.draw do
   root :to => "home#welcome"
   devise_for :users
   resources :users
+  map.user '/:name', :controller => 'users'
 end
