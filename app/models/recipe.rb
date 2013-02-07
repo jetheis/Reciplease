@@ -30,4 +30,7 @@ class Recipe < ActiveRecord::Base
     medium: '300x300>'
   }
   
+  def to_param
+    "#{id}/#{name}"
+  end
 end
