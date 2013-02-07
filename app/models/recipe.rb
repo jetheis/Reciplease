@@ -17,6 +17,15 @@ class Recipe < ActiveRecord::Base
   # ratings
   has_many :ratings
   
+  def average_rating
+    @score = 0
+    self.ratings.each do |rating|
+        @score = @score + rating.score
+    end
+    @count = self.ratings.size
+    return @score.to_f / @count.to_f
+  end
+  
   ## Accessibile attributes
   attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients
   # we should limit the length of :description 
