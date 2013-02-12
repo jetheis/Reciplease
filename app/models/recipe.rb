@@ -27,7 +27,7 @@ class Recipe < ActiveRecord::Base
   end
   
   ## Accessibile attributes
-  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredient, :image
+  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients, :image
   # TODO we should limit the length of :description 
   
   has_attached_file :image, styles: {
@@ -36,7 +36,8 @@ class Recipe < ActiveRecord::Base
     medium: '300x300'
   }
   
-  def to_param
-    "#{id}/#{name}"
-  end
+  #def to_param
+  #  "#{id}/#{name}"
+  #end
+  
 end
