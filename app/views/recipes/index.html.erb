@@ -7,21 +7,7 @@
   <ul class="thumbnails">
     <!-- TODO Change this loop over all recipes to loop over top recipes limiting number of results -->
     <% @recipes.each do |recipe| %>
-      <li class="span3">
-        <div class="thumbnail" style="height: 350px">
-          <%= link_to image_tag("http://lorempixel.com/g/300/200/food", :border=>0, :alt=>'recipe thumbnail', :title=>''),
-               recipe, :class=>"thumbnail" %>
-          
-          <h3 style="display:inline"><%= recipe.name %></h3>
-          <p style="display:inline">by <%= link_to recipe.owner.name, recipe.owner, :style=>"text-decoration: none" %></p>
-          <p><%= recipe.description %></p>
-          
-          <% if recipe.owner == current_user %>
-            <%= link_to 'Edit', edit_recipe_path(recipe), :style=>"text-decoration: none" %>
-            <%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete, :style=>"text-decoration: none" %>
-          <% end %>
-        </div>
-      </li>
+      <%= render "recipes/thumbnail_block", :recipe => recipe %>
     <% end %>
   </ul>
 </div>

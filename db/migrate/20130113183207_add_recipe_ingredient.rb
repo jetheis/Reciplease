@@ -4,7 +4,7 @@ class AddRecipeIngredient < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :instructions
-      #t.references :resource, :polymorphic => true
+      t.references :resource, :polymorphic => true
       t.references :owner, :class_name => "User"
       t.references :base, :class_name => "Recipe"
 

@@ -1,31 +1,10 @@
-<div class="container">
-	<div class="row">
-  		<div class="span4">
-  			<ul class="thumbnails">
-  				<li class="span4">
-    				<a href="#" class="thumbnail">
-      					<img src="http://placehold.it/350x600" alt="">
-    				</a>
-  				</li>
-			</ul>
-		</div>
-  		<div class="span4">
-  			<ul class="thumbnails">
-  				<li class="span4">
-    				<a href="#" class="thumbnail">
-      					<img src="http://placehold.it/350x600" alt="">
-    				</a>
-  				</li>
-			</ul>
-		</div>
-  		<div class="span4">
-  			<ul class="thumbnails">
-  				<li class="span4">
-    				<a href="#" class="thumbnail">
-      					<img src="http://placehold.it/350x600" alt="">
-    				</a>
-  				</li>
-			</ul>
-		</div>
+<div class="container-narrow" style="margin: 0 auto; max-width: 700px">
+	<div class="jumbotron" style="text-align: center">
+		<h1 style="text-align: center">Welcome to the<br>Reciplease Development site!</h1>
+		<p class="lead">
+			The Reciplease Project is an attempt to bring the fun of cooking to a wider audience. There are plenty of websites that provide recipes, but not many that help you make recipes your own. That's the goal of Reciplease: to help you create, perfect, and share your ideas about cooking.
+		</p>
+		<%= link_to('Join Us!', new_user_registration_path, :class => "btn btn-large btn-success") %>
+		<%= link_to('Login', new_user_session_path, :class => "btn btn-large btn-primary")%>
 	</div>
 </div>
