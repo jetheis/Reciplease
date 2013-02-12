@@ -1,7 +1,7 @@
 class Recipe < ActiveRecord::Base
   
   ## Validations
-  validates_presence_of :name, :owner, :description, :instructions
+  validates_presence_of :name, :owner, :ingredients, :description, :instructions
   validates_uniqueness_of :name, :case_sensitive => false, :scope => [:owner_id, :base_id]
 
   ## Relationships
@@ -13,10 +13,6 @@ class Recipe < ActiveRecord::Base
   # User Favorites
   has_many :fav_recipes
   has_many :users, :through => :fav_recipes
-  
-  # included ingredient descriptions can be accessed indirectly through the many-to-many table 'ingredient'
-  has_many :ingredients
-  has_many :ingredient_descs, :through => :ingredients
 
   # ratings
   has_many :ratings
