@@ -4,6 +4,8 @@
   <%= f.input :name, :label => 'Recipe name' %>
   <%= f.label :Description %>
   <%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
+  <%= f.label :Ingredients %>
+  <%= f.text_area :ingredients, :required => false, :cols => 30, :rows => 5 %>
 
   <div class="control-group string required">
   	<%= f.label :instructions, :required => true %>

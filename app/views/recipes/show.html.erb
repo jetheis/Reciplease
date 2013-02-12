@@ -1,40 +1,41 @@
-<div id="image" class="span5" style="float:right">
-  <%= image_tag @recipe.image.url(:medium) %>
+<div class="row">
+	<div class="span7">
+		<h2><%= @recipe.name %></h2>
+		<h4>By <%= link_to @recipe.owner.name, @recipe.owner %></h4>
+		
+		<h5>Ingredients</h5>
+		<p><%= @recipe.ingredients%></p>
+		
+		<h5>Description</h5>
+		<p><%= @recipe.description %></p>
+		
+		<h5>Instructions</h5>
+		<p><%= @recipe.instructions %></p>
+		
+		<% if @recipe.owner == current_user %>
+		  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+		<% end %>
+		<%= link_to 'Back', recipes_path %>
+	</div>
+	
+	<div id="image" class="span5" style="float:right">
+	  <%= image_tag @recipe.image.url(:medium) %>
+	</div>
 </div>
 
-<h2><%= @recipe.name %></h2>
-<h4>By <%= link_to @recipe.owner.name, @recipe.owner %></h4>
-
-<h5>Ingredients</h5>
-<ul>
-  <li>TODO</li>
-</ul>
-
-<h5>Description</h5>
-<p><%= @recipe.description %></p>
-
-<h5>Instructions</h5>
-<p><%= @recipe.instructions %></p>
-
-<%# TODO sanitize html, or should that be done on creation? %>
-<%# TODO recipe edit permissions %>
-<%# TODO recipe fork link %>
-<% if @recipe.owner == current_user %>
-  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<% end %>
-<%= link_to 'Back', recipes_path %>
-
+<div class="row">
 <div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES* * */
-    var disqus_shortname = 'reciplease';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES* * */
+	    var disqus_shortname = 'reciplease';
+	
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
