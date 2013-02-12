@@ -1,0 +1,14 @@
+<% content_for(:scripts) do %>
+<%= javascript_include_tag 'rating_ballot' %>
+<% end %>
+
+<%= form_for(rating_ballot, :remote => true, :html => { :class => 'rating_ballot' }) do |f| %>
+<% [1,2,3,4,5].each do |n| %>
+<%= f.label("score_"+n.to_s, content_tag(:span, n.to_s), {:class=>"rating", :id=>n}) %>
+<%= radio_button_tag("rating[score]", n, current_user_rating == n, :class => 'rating_button') %>
+<% end %>
+
+<%= hidden_field_tag("recipe_id", @recipe.id) %>
+<%#= f.button :submit, {:id => 'rating_submit'} %>
+
+<% end %>

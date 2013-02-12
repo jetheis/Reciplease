@@ -2,6 +2,8 @@
 	<div class="span7">
 		<h2><%= @recipe.name %></h2>
 		<h4>By <%= link_to @recipe.owner.name, @recipe.owner %></h4>
+				
+		<%= render "rating_form" %><br />
 		
 		<h5>Ingredients</h5>
 		<p><%= @recipe.ingredients%></p>
@@ -23,7 +25,6 @@
 	</div>
 </div>
 
-<div class="row">
 <div id="disqus_thread"></div>
 	<script type="text/javascript">
 	    /* * * CONFIGURATION VARIABLES* * */

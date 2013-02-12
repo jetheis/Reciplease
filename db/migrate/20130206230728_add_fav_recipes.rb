@@ -1,4 +1,4 @@
-class Add_Fav_Recipes < ActiveRecord::Migration
+class AddFavRecipes < ActiveRecord::Migration
   def up
     create_table "fav_recipes" do |t|
       t.column "user_id", :integer

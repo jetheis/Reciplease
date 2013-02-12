@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(:version => 20130206231143) do
 
   add_index "ingredients", ["recipe_id", "ingredient_desc_id"], :name => "index_ingredients_on_recipe_id_and_ingredient_desc_id"
 
+  create_table "ratings", :force => true do |t|
+    t.integer  "score",      :null => false
+    t.integer  "recipe_id",  :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ratings", ["recipe_id", "user_id"], :name => "index_ratings_on_recipe_id_and_user_id", :unique => true
+
   create_table "recipes", :force => true do |t|
     t.string   "name"
     t.string   "description"
