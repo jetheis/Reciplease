@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212204134) do
+ActiveRecord::Schema.define(:version => 20130213051200) do
 
   create_table "fav_recipes", :force => true do |t|
     t.integer "user_id"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20130212204134) do
 
   create_table "recipes", :force => true do |t|
     t.string   "name"
-    t.string   "description"
-    t.string   "instructions"
+    t.text     "description"
+    t.text     "instructions"
     t.integer  "owner_id"
     t.integer  "base_id"
     t.datetime "created_at",         :null => false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130212204134) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "ingredients"
+    t.text     "ingredients"
   end
 
   create_table "roles", :force => true do |t|
