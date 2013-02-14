@@ -54,6 +54,29 @@ class RecipesController < ApplicationController
       redirect_to @recipe, alert: "You do not have permission to edit this recipe."
     end
   end
+  
+  # GET /recipes/1/personalize
+  def personalize
+    @recipe = Recipe.new
+
+    is_logged_in = current_user != nil
+    is_owner = Recipe.find(params[:id]).owner == current_user
+    
+    respond_to do |format|
+      if is_logged_in
+        format.html # personalize.html.erb
+        format.json { render json: @recipe }
+      else
+        format.html { redirect_to recipes_url, alert: "You need to login to personalize recipes." }
+        format.json { head :no_content, status: :unauthorized }
+      end
+      
+      if is_owner
+        format.html { redirect_to edit_recipe_path }
+      end
+
+    end
+  end
 
   # POST /recipes
   # POST /recipes.json

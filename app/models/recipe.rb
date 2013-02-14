@@ -2,7 +2,6 @@ class Recipe < ActiveRecord::Base
   
   ## Validations
   validates_presence_of :name, :owner, :ingredients, :description, :instructions
-  validates_uniqueness_of :name, :case_sensitive => false, :scope => [:owner_id, :base_id]
 
   ## Relationships
   belongs_to :owner, :class_name => "User"
@@ -27,7 +26,7 @@ class Recipe < ActiveRecord::Base
   end
   
   ## Accessibile attributes
-  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients, :image
+  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients, :image, :parent
   # TODO we should limit the length of :description 
   
   has_attached_file :image, styles: {
