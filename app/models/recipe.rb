@@ -16,4 +16,16 @@ class Recipe < ActiveRecord::Base
   
   ## Accessibile attributes
   attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients 
+  
+  def self.api_rep
+    Recipe.order("name ASC").all.map do |recipe|
+      recipe.api_hash
+    end
+  end
+  
+  def api_hash
+    {
+      id: self.id, name: self.name, description: self.description, instructions: self.instructions, owner_id: self.owner_id, base_id: self.base_id
+    }
+  end
 end
