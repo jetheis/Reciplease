@@ -1,11 +1,12 @@
-<h1>Editing recipe</h1>
+<h1>Personalizing recipe</h1>
 
-<%= simple_form_for @recipe, :url => { :action => "update" }, :html => {:class => "nifty_form"} do |f| %>
+<%= simple_form_for @recipe, :url => { :action => "create" }, :html => {:class => "nifty_form"} do |f| %>
   <%= f.input :name, :label => 'Recipe name' %>
   <%= f.label :Description %>
   <%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
   <%= f.label :Ingredients %>
   <%= f.text_area :ingredients, :required => false, :cols => 30, :rows => 5 %>
+  <%= f.hidden_field :parent, :value => params[:id] %>
   
   <div class="control-group string required">
 	<%= f.label :instructions, :required => true %>
@@ -17,7 +18,7 @@
     <%= f.file_field :image %>
   </div> <br />
   
-  <%= f.button :submit =%>
+  <%= f.submit " Personalize " %>
 <% end %>
 
 <%= link_to 'Show', @recipe %> |

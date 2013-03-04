@@ -1,0 +1,7 @@
+<%= fields_for "recipe[ingredients_attributes][]", ingredient do |i| %>
+  <li>
+    <%= link_to("Remove", "#delete", :class => "delete-ingredient") %>
+    <%= i.label :full_name, "Full Name" %>
+    <%= i.text_field :full_name %>
+  </li>
+<% end %>

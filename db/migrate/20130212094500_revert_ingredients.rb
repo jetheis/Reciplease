@@ -1,16 +1,13 @@
-class AddRecipeIngredient < ActiveRecord::Migration
-  def change
-    create_table(:recipes) do |t|
-      t.string :name
-      t.string :description
-      t.string :instructions
-      t.references :resource, :polymorphic => true
-      t.references :owner, :class_name => "User"
-      t.references :base, :class_name => "Recipe"
+class RevertIngredients < ActiveRecord::Migration
+  #require_relative '20130113183207_add_recipe_ingredient.rb'
 
-      t.timestamps
-    end
+  def up
+    drop_table(:ingredient_desc)
+    drop_table(:ingredients)
+  end
 
+  def down
+    # Shamelessly copy-pasta'd
     create_table(:ingredients, :id => false) do |t|
       t.references :recipe
       t.references :ingredient_desc

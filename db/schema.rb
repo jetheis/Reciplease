@@ -11,51 +11,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115212521) do
-
-  create_table "comments", :force => true do |t|
-    t.integer  "commentable_id",   :default => 0
-    t.string   "commentable_type", :default => ""
-    t.string   "title",            :default => ""
-    t.text     "body",             :default => ""
-    t.string   "subject",          :default => ""
-    t.integer  "user_id",          :default => 0,  :null => false
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+ActiveRecord::Schema.define(:version => 20130213051200) do
+  
+  create_table "fav_recipes", :force => true do |t|
+    t.integer "user_id"
+    t.integer "recipe_id"
   end
 
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
-  create_table "ingredient_desc", :force => true do |t|
-    t.string   "name",        :null => false
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "ratings", :force => true do |t|
+    t.integer  "score",      :null => false
+    t.integer  "recipe_id",  :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "ingredients", :id => false, :force => true do |t|
-    t.integer  "recipe_id"
-    t.integer  "ingredient_desc_id"
-    t.decimal  "quantity",           :null => false
-    t.string   "unit",               :null => false
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  add_index "ingredients", ["recipe_id", "ingredient_desc_id"], :name => "index_ingredients_on_recipe_id_and_ingredient_desc_id"
+  add_index "ratings", ["recipe_id", "user_id"], :name => "index_ratings_on_recipe_id_and_user_id", :unique => true
 
   create_table "recipes", :force => true do |t|
     t.string   "name"
-    t.string   "description"
-    t.string   "instructions"
+    t.text     "description"
+    t.text     "instructions"
     t.integer  "owner_id"
     t.integer  "base_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "ingredients"
+    t.integer  "parent"
   end
 
   create_table "roles", :force => true do |t|
