@@ -48,7 +48,7 @@ class Recipe < ActiveRecord::Base
   
   def api_hash
     {
-      id: self.id, name: self.name, description: self.description, instructions: self.instructions, owner_id: self.owner_id, base_id: self.base_id
+      id: self.id, name: self.name, description: self.description, instructions: self.instructions, owner_id: self.owner_id, base_id: self.base_id, parent: self.parent, picture: self.image
     }
   end
 
