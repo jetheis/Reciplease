@@ -7,7 +7,9 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @recipes }
+      format.json do
+        render json: Recipe.api_rep
+      end
     end
   end
 
@@ -18,7 +20,9 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @recipe }
+      format.json do
+        render json: @recipe.api_hash
+      end
     end
   end
 
