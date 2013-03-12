@@ -27,8 +27,4 @@ class User < ActiveRecord::Base
   def api_hash
     { email: self.email, name: self.name}
   end
-  def to_param
-    name
-
-  end
 end
