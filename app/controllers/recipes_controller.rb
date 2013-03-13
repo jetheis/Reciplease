@@ -62,6 +62,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1/personalize
   def personalize
     @recipe = Recipe.new
+    @recipe.parent_id = params[:id];
 
     is_logged_in = current_user != nil
     is_owner = Recipe.find(params[:id]).owner == current_user
