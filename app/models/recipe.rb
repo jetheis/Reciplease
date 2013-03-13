@@ -1,5 +1,8 @@
 class Recipe < ActiveRecord::Base
   
+  #Commentable
+  acts_as_commentable
+  
   ## Validations
   validates_presence_of :name, :owner, :ingredients, :description, :instructions
 

@@ -26,3 +26,4 @@ gem "social-share-button"
 gem "kaminari"
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'acts_as_commentable'

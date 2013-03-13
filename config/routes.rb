@@ -3,7 +3,10 @@ Reciplease::Application.routes.draw do
   resources :recipes
   match "/recipes/:id/personalize" => "recipes#personalize", :as => :personalize_recipe
   match "/recipes/:id/history" => "recipes#history", :as => :recipe_history
- 
+  
+  resources :comments
+  post 'comments/add_comment'
+  
   # Need to add routes for pretty URLs
   # match 'recipes/:id/:name' => 'recipes#show'
 

@@ -26,6 +26,12 @@
 	<div id="image" class="span5" style="float:right">
 	  <%= image_tag @recipe.image.url(:medium) %>
 	</div>
+	
+
+</div>
+<div class="row">
+	<%= render 'layouts/comment_form'%>
+	<%= yield%>
 </div>
 
 <br /><br />
