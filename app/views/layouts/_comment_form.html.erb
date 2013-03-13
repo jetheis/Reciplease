@@ -4,6 +4,6 @@
   
   <%= f.submit 'Add Comment' %>
 
-  <%= f.hidden_field :commentable_type, :value => :recipe %>
-  <%= f.hidden_field :commentable_id, :value => @recipe.id %>
+  <%= f.hidden_field :commentable_type, :value => params[:controller] %>
+  <%= f.hidden_field :commentable_id, :value => params[:id] %>
 <% end %>

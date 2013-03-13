@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
     # Assign this comment to the logged in user
     comment.user_id = current_user.id
   
-    comment.save
+    if comment.save
+      #TODO: Fix this so it redirects properly
+      redirect_to :id => comment.commentable_id, :controller => comment.commentable_type
+    else
+      #TODO: Add an error message if comment did not save
+    end
   end
 end
