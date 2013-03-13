@@ -23,8 +23,15 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
   
+  def self.api_rep
+    User.order("name ASC").all.map do |user|
+      user.api_hash
+    end
+  end
 
   def api_hash
     { email: self.email, name: self.name}
   end
+  
+  
 end
