@@ -9,8 +9,8 @@ class Recipe < ActiveRecord::Base
   ## Relationships
   belongs_to :owner, :class_name => "User"
   # should we add in User: has_many :recipes, :foreign_key => "owner_id" ?
-  belongs_to :base, :class_name => "Recipe"
-  has_many :forks, :class_name => "Recipe", :foreign_key => "base_id"
+  belongs_to :parent, :class_name => "Recipe"
+  has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
   
   # User Favorites
   has_many :fav_recipes
@@ -30,7 +30,7 @@ class Recipe < ActiveRecord::Base
   
   ## Accessibile attributes
 
-  attr_accessible :name, :owner_id, :description, :instructions, :base, :forks, :ingredients, :image, :parent
+  attr_accessible :name, :owner_id, :description, :instructions, :forks, :ingredients, :image, :parent_id
   
    has_attached_file :image, styles: {
     thumb: '100x100',
@@ -51,7 +51,7 @@ class Recipe < ActiveRecord::Base
   
   def api_hash
     {
-      id: self.id, name: self.name, description: self.description, instructions: self.instructions, owner_id: self.owner_id, base_id: self.base_id
+      id: self.id, name: self.name, description: self.description, instructions: self.instructions, owner_id: self.owner_id, parent_id: self.parent_id, picture: self.image
     }
   end
 

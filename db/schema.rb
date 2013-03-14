@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214162813) do
+ActiveRecord::Schema.define(:version => 20130313201634) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20130214162813) do
     t.text     "description"
     t.text     "instructions"
     t.integer  "owner_id"
-    t.integer  "base_id"
+    t.integer  "parent_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20130214162813) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "ingredients"
-    t.integer  "parent"
   end
 
   create_table "roles", :force => true do |t|

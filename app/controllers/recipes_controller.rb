@@ -37,10 +37,10 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if is_logged_in
         format.html # new.html.erb
-        format.json { render json: @recipe }
+        #Should not be responding here we only need to respond to a put or post of a new recipe
       else
         format.html { redirect_to recipes_url, alert: "You need to login to create recipes." }
-        format.json { head :no_content, status: :unauthorized }
+        #Again not our concern the application using this needs to handle that
       end
     end
   end
@@ -62,6 +62,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1/personalize
   def personalize
     @recipe = Recipe.new
+    @recipe.parent_id = params[:id];
 
     is_logged_in = current_user != nil
     is_owner = Recipe.find(params[:id]).owner == current_user
@@ -69,10 +70,10 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if is_logged_in
         format.html # personalize.html.erb
-        format.json { render json: @recipe }
+        #Only need  to respond to a put or post
       else
         format.html { redirect_to recipes_url, alert: "You need to login to personalize recipes." }
-        format.json { head :no_content, status: :unauthorized }
+        #We dont need to handle this
       end
       
       if is_owner
@@ -83,7 +84,7 @@ class RecipesController < ApplicationController
   end
 
   # POST /recipes
-  # POST /recipes.json
+  # POST /recipes.json 
   def create
     is_logged_in = current_user != nil
 
