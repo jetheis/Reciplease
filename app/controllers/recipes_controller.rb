@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  #TODO: BAD SMELL-DAVID A lot of the format blocks can be removed, use API functionality  
+  #TODO: BAD SMELL-DAVID A lot of the format blocks can be removed
   
   # GET /recipes
   # GET /recipes.json

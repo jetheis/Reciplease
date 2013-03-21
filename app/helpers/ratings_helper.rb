@@ -1,3 +1,3 @@
 module RatingsHelper
-    #TODO: BAD SMELL-ROB UNUSED MODULE
+    #TODO: BAD SMELL-DAVID UNUSED MODULE
 end
