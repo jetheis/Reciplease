@@ -1,4 +1,5 @@
 class Recipe < ActiveRecord::Base
+  #TODO: BAD SMELL-ROB Too many comments, code could easily be clearer, and there is dead commented code
   
   #Commentable
   acts_as_commentable

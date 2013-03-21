@@ -1,3 +1,5 @@
+<!--TODO: BAD SMELL-ROBBIE Is this being used at all? -->
+
 <%= fields_for "recipe[ingredients_attributes][]", ingredient do |i| %>
   <li>
     <%= link_to("Remove", "#delete", :class => "delete-ingredient") %>
