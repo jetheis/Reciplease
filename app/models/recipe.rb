@@ -1,8 +1,5 @@
 class Recipe < ActiveRecord::Base
   
-  #Commentable
-  acts_as_commentable
-  
   ## Validations
   validates_presence_of :name, :owner, :ingredients, :description, :instructions
 
@@ -13,8 +10,11 @@ class Recipe < ActiveRecord::Base
   has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
   
   # User Favorites
-  has_many :fav_recipes
+  has_many :fav_recipes, :class_name => "Recipe", :through => :fav_recipes
   has_many :users, :through => :fav_recipes
+  
+  # Commentable
+  acts_as_commentable
 
   # ratings
   has_many :ratings
