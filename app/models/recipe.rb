@@ -10,8 +10,7 @@ class Recipe < ActiveRecord::Base
   has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
   
   # User Favorites
-  has_many :fav_recipes, :class_name => "Recipe", :through => :fav_recipes
-  has_many :users, :through => :fav_recipes
+  has_and_belongs_to_many :favoring_users, :class_name => "User", :join_table => :fav_recipes
   
   # Commentable
   acts_as_commentable
