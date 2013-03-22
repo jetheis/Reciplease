@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @users = User.all
-    # There seems to be an issue with the user index page
+    # TODO: Should we remove this? Maybe just redirect to the current_user page
     # respond_to do |format|
      # format.html # index.html.erb
      # format.json do
