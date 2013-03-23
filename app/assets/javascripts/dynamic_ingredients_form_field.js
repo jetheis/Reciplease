@@ -1,3 +1,5 @@
+// TODO: Bad Smell: Unused javascript code - expandable ingredient entry
+
 $(document).ready(function() {
   $('a#add-another').click(function() {
     $('#ingredients-list li:first').clone().find('input').val('').end().appendTo('#ingredients-list');
