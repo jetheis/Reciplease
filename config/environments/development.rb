@@ -1,4 +1,6 @@
 Reciplease::Application.configure do
+  # TODO: BAD SMELL-BEN over commented, this and production.rb need to be cleaned up
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

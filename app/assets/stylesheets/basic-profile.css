@@ -1,6 +1,8 @@
 /*
 Original design: Basic Profile (v2.0 - Sep 11, 2012) - A free xhtml/css website template by Andreas Viklund.
 For more information, see http://andreasviklund.com/templates/basic-profile/
+
+TODO: BAD SMELL-BEN: this css is barely being used, and it would be much better to be consistent and use bootstrap for everything
 */
 
 *{margin:0; padding:0;}

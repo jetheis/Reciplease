@@ -1,7 +1,5 @@
 class Recipe < ActiveRecord::Base
-  
-  #Commentable
-  acts_as_commentable
+  #TODO: BAD SMELL-ROB Too many comments, code could easily be clearer, and there is dead commented code
   
   ## Validations
   validates_presence_of :name, :owner, :ingredients, :description, :instructions
@@ -13,8 +11,10 @@ class Recipe < ActiveRecord::Base
   has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
   
   # User Favorites
-  has_many :fav_recipes
-  has_many :users, :through => :fav_recipes
+  has_and_belongs_to_many :favoring_users, :class_name => "User", :join_table => :fav_recipes
+  
+  # Commentable
+  acts_as_commentable
 
   # ratings
   has_many :ratings

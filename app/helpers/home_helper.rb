@@ -1,2 +1,3 @@
 module HomeHelper
+  #TODO: BAD SMELL-DAVID UNUSED MODULE
 end
