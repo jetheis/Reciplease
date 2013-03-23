@@ -15,5 +15,3 @@
 //= require bootstrap
 //= require social-share-button 
 //= require_tree .
-//
-//= require dynamic_ingredients_form_field
