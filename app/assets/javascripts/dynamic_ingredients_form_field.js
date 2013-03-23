@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#ingredients-list li:first').clone().find('input').val('').end().appendTo('#ingredients-list');
   });
 
-  $('.delete-ingredient').live('click', function() {
+  $('.delete-ingredient').on('click', function() {
     if ($('#ingredients-list li').length > 1)
       $(this).parent().remove();
     else
