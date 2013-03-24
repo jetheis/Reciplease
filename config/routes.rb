@@ -3,7 +3,10 @@ Reciplease::Application.routes.draw do
   ## Override default devise functions with registration controller
   devise_for :users, :controllers => { :registrations => 'registrations' }
   
-  # resources :users, :only => [:show]
+  match "/users/reactivation" => "users#reactivation", :as => :reactivation
+  match "/users/reactivate" => "users#reactivate", :as => :reactivate
+  resources :users, :only => [:show]
+
 
   resources :recipes
   match "/recipes/:id/personalize" => "recipes#personalize", :as => :personalize_recipe

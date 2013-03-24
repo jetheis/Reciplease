@@ -23,11 +23,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
-  
-  def soft_delete
-    update_attribute(:active, false)
-  end
-  
+
   def self.api_rep
     User.order("name ASC").all.map do |user|
       user.api_hash

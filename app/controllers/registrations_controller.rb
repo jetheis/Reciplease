@@ -19,14 +19,10 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
   
-  def update
-    super
-  end
-  
   def destroy
-    resource.soft_delete
+    resource.update_attribute(:active, false)
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    set_flash_message :notice, :destroyed if is_navigational_format?
+    flash[:notice] = "Your account was successfully disabled, we hope to see you again soon!"   
     respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name) }
   end
   
