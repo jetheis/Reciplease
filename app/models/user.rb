@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   gravtastic  :secure => true,
               :filetype => :gif
   
+  #Adds the ability to give users roles
   rolify
   
   validates_presence_of :name
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :name, :password, :password_confirmation, :remember_me
   
+  def soft_delete
+    update_attribute(:active, false)
+  end
+  
   def self.api_rep
     User.order("name ASC").all.map do |user|
       user.api_hash
@@ -30,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def api_hash
-    { email: self.email, name: self.name}
+    { email: self.email, name: self.name }
   end
   
   
