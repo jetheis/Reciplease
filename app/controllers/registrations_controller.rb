@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     super
+    resource.update_attribute(:active, true)
   end
 
   def update

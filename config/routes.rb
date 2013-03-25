@@ -7,7 +7,6 @@ Reciplease::Application.routes.draw do
   match "/users/reactivate" => "users#reactivate", :as => :reactivate
   resources :users, :only => [:show]
 
-
   resources :recipes
   match "/recipes/:id/personalize" => "recipes#personalize", :as => :personalize_recipe
   match "/recipes/:id/history" => "recipes#history", :as => :recipe_history

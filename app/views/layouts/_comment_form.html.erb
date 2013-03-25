@@ -1,9 +1,0 @@
-<%= form_for :comment, :url => { :action => 'add_comment', :controller => 'comments' } do |f|%>
-  <%= f.text_field :title %>
-  <%= f.text_area :body %>
-  
-  <%= f.submit 'Add Comment' %>
-
-  <%= f.hidden_field :commentable_type, :value => params[:controller] %>
-  <%= f.hidden_field :commentable_id, :value => params[:id] %>
-<% end %>

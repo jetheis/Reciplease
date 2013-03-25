@@ -1,0 +1,26 @@
+<h3> Comment </h3>
+
+<%= form_for :comment, :url => { :action => 'add_comment', :controller => 'comments' } do |f|%>
+
+  <%= f.text_area(:comment, :style => 'width:100%', :rows => 8) %> <br />
+  <p align="right"><%= f.submit ' Submit ' %></p>
+
+  <%= f.hidden_field :commentable_type, :value => params[:controller] %>
+  <%= f.hidden_field :commentable_id, :value => params[:id] %>
+<% end %>
+
+<!-- fetch_comments is in the comment helper -->
+<% comments = fetch_comments(params[:controller], params[:id]) %>
+<% comments.each do |c| %>
+	<% user = User.find(c.user_id) %>
+	<p class="comment">
+		<%= link_to(image_tag(user.gravatar_url, :size => '50x50'), user_path(current_user)) %>
+		<span class = "comment_author">
+			<%= link_to(user.name, user_path(user)) %> <br />
+		</span>
+		<%= c.comment %>
+	</p>
+<% end %>
+<span class = "apple_pagination">
+	<%= will_paginate comments %>
+</span>
