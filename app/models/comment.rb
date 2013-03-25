@@ -6,5 +6,4 @@ class Comment < ActiveRecord::Base
   
   attr_accessible :comment, :commentable_type, :commentable_id
 
-  default_scope -> { order('created_at ASC') }
 end
