@@ -26,7 +26,11 @@
 	<div id="image" class="span5" style="float:right">
 	  <%= image_tag @recipe.image.url(:medium) %>
 	</div>
+</div>
 	
-
-
-<br /><br />
+<div class="row spacer">
+	<div class = "span7">
+		<%= render 'layouts/comments'%>
+		<%= yield %>
+	</div>
+</div>
