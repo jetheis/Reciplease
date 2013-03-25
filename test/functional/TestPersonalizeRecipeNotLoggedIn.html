@@ -4,53 +4,34 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://127.0.0.1:3000/" />
-<title>testLoginUser</title>
+<title>TestPersonalizeRecipeNotLoggedIn</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">testLoginUser</td></tr>
+<tr><td rowspan="1" colspan="3">TestPersonalizeRecipeNotLoggedIn</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>/recipes/</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Login</td>
+	<td>css=img[alt=&quot;recipe thumbnail&quot;]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=user_email</td>
-	<td>testuser@sharklasers.com</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=user_password</td>
-	<td>testuser</td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>name=commit</td>
+	<td>link=Personalize</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=flash_notice</td>
-	<td>Signed in successfully.</td>
+	<td>id=flash_alert</td>
+	<td>You need to login to personalize recipes.</td>
 </tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Logout</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>id=flash_notice</td>
-	<td>Signed out successfully.</td>
-</tr>
+
 </tbody></table>
 </body>
 </html>
