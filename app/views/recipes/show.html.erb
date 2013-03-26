@@ -6,21 +6,20 @@
 		<%= render "rating_form" %><br />
 		
 		<h5>Description</h5>
-		<p><%= @recipe.description %></p>
+		<p><%= raw(Maruku.new(@recipe.description).to_html) %></p>
 		
 		<h5>Ingredients</h5>
-		<p><%= @recipe.ingredients %></p>
+		<p><%= raw(Maruku.new(@recipe.ingredients).to_html)  %></p>
 		
 		<h5>Instructions</h5>
-		<p><%= @recipe.instructions %></p>
+		<p><%= raw(Maruku.new(@recipe.instructions).to_html)  %></p>
 		
 		<% if @recipe.owner == current_user %>
 		  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 		<% else %>
-		  <%= link_to 'Personalize', personalize_recipe_path(@recipe) %> |
+		  <%= link_to 'Personalize', personalize_recipe_path(@recipe) %>
 		<% end %>
-		<%= link_to 'History', recipe_history_path(@recipe) %> |
-		<%= link_to 'Back', recipes_path %>
+		<%= link_to 'History', recipe_history_path(@recipe) %>
 	</div>
 	
 	<div id="image" class="span5" style="float:right">
