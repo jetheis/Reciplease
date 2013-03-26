@@ -12,4 +12,12 @@ class CommentsController < ApplicationController
       flash[:notice] = "Comment failed to save, please try again!"
     end
   end
+  
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    
+    redirect_to :controller => comment.commentable_type, :action => 'show', :id => comment.commentable_id
+  end
+  
 end
