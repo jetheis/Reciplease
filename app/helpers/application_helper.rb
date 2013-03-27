@@ -11,4 +11,9 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
+  
+  def render_markdown(text)
+    body = ERB::Util.html_escape(text)
+    raw(Maruku.new(body).to_html)
+  end
 end

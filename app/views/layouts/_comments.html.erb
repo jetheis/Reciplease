@@ -2,7 +2,7 @@
 
 <%= form_for :comment, :url => { :action => 'add_comment', :controller => 'comments' } do |f|%>
 
-  <%= f.text_area(:comment, :style => 'width:100%', :rows => 8) %> <br />
+  <%= f.text_area(:body, :style => 'width:100%', :rows => 8) %> <br />
   <p align="right"><%= f.submit ' Submit ' %></p>
 
   <%= f.hidden_field :commentable_type, :value => params[:controller] %>
@@ -11,21 +11,24 @@
 
 <!-- fetch_comments is in the comment helper -->
 <% comments = fetch_comments(params[:controller], params[:id]) %>
+
 <% comments.each do |c| %>
 	<% user = User.find(c.user_id) %>
-	<p class="comment">
-		<%= link_to(image_tag(user.gravatar_url, :size => '50x50'), user_path(current_user)) %>
-		<span class = "comment_author">
+	<div class="comment">
+		<%= link_to(image_tag(user.gravatar_url, :size => '50x50'), user_path(user)) %>
+		<span class="comment_author">
 			<%= link_to(user.name, user_path(user)) %>
-		</span> <br />
-		<%= c.body %> <br />
-		<% if(c.user_id == current_user.id) %>
-		<span class = "comment_options">
-			<%= link_to 'Delete', comment_path(c) , :confirm => "Are you sure?", :method => :delete %>
-		</span>
+		</span> 
+		<% if(current_user != nil && c.user_id == current_user.id) %>
+			<span class="comment_options">
+				<%= link_to raw('<i class="icon-remove-sign"></i>'), comment_path(c) , :confirm => "Are you sure?", :method => :delete %>
+			</span>
 		<% end %>
-	</p>
+		<br />
+		<%= render_markdown(c.body) %>
+	</div>
 <% end %>
+
 <span class = "apple_pagination">
 	<%= will_paginate comments %>
 </span>

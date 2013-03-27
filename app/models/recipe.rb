@@ -1,24 +1,20 @@
 class Recipe < ActiveRecord::Base
   #TODO: BAD SMELL-ROB Too many comments, code could easily be clearer, and there is dead commented code
-  
-  ## Validations
-  validates_presence_of :name, :owner, :ingredients, :description, :instructions
 
-  ## Relationships
+  
+  ##Validations
+  validates_presence_of :name, :owner, :ingredients, :description, :instructions
+  
+  # Relationships
   belongs_to :owner, :class_name => "User"
-  # should we add in User: has_many :recipes, :foreign_key => "owner_id" ?
+  has_many :ratings
+  has_and_belongs_to_many :favoring_users, :class_name => "User", :join_table => :fav_recipes
   belongs_to :parent, :class_name => "Recipe"
   has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
-  
-  # User Favorites
-  has_and_belongs_to_many :favoring_users, :class_name => "User", :join_table => :fav_recipes
-  
+
   # Commentable
   acts_as_commentable
 
-  # ratings
-  has_many :ratings
-  
   def average_rating
     @score = 0
     self.ratings.each do |rating|

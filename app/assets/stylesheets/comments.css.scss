@@ -5,7 +5,11 @@
 .comment {
   overflow: hidden;
   font-size: 12pt;
-  padding-bottom: 5px;
+  padding-bottom: 20px;
+}
+
+.comment_body  {
+  display: inline;
 }
 
 .comment img {
@@ -18,7 +22,8 @@
 }
 
 .comment_options {
-  font-size: 9pt;
+  float: right;
+  display: inline;
 }
 
 // For Pagination

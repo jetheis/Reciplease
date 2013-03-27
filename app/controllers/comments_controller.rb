@@ -1,23 +1,35 @@
 class CommentsController < ApplicationController
-  
+
   def add_comment
     # Create a comment with the user submitted content
-    c= Comment.new(params[:comment])
+    @comment = Comment.new(params[:comment])
+    
     # Assign this comment to the logged in user
-    c.user_id = current_user.id
-  
-    if c.save
-      redirect_to :controller => c.commentable_type, :action => 'show', :id => c.commentable_id
+    if(current_user == nil)
+      flash[:alert] = "You must be logged in to create comment"
+      return_to_commentable(@comment);
+    elsif(@comment.body == "")
+      flash[:alert] = "You cannot post an empty comment"
+      return_to_commentable(@comment);
     else
-      flash[:notice] = "Comment failed to save, please try again!"
+      @comment.user_id = current_user.id
+      if @comment.save
+        return_to_commentable(@comment);
+      else
+        flash[:alert] = "Comment failed to save, please try again!"
+      end
     end
   end
   
   def destroy
-    c = Comment.find(params[:id])
-    c.destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
     
-    redirect_to :controller => c.commentable_type, :action => 'show', :id => c.commentable_id
+    return_to_commentable(@comment);
+  end
+  
+  def return_to_commentable(comment)
+    redirect_to :controller => comment.commentable_type, :action => 'show', :id => comment.commentable_id
   end
   
 end

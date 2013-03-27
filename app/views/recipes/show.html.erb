@@ -6,13 +6,13 @@
 		<%= render "rating_form" %><br />
 		
 		<h5>Description</h5>
-		<p><%= raw(Maruku.new(@recipe.description).to_html) %></p>
+		<p><%= render_markdown(@recipe.description) %></p>
 		
 		<h5>Ingredients</h5>
-		<p><%= raw(Maruku.new(@recipe.ingredients).to_html)  %></p>
+		<p><%= render_markdown(@recipe.ingredients) %></p>
 		
 		<h5>Instructions</h5>
-		<p><%= raw(Maruku.new(@recipe.instructions).to_html)  %></p>
+		<p><%= render_markdown(@recipe.instructions)  %></p>
 		
 		<% if @recipe.owner == current_user %>
 		  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
