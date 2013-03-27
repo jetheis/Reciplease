@@ -3,7 +3,6 @@
 
 // Comments
 .comment {
-  overflow: hidden;
   font-size: 12pt;
   padding-bottom: 20px;
 }
@@ -13,8 +12,10 @@
 }
 
 .comment img {
+  overflow: hidden;
   float: left;
   padding-right: 10px;
+  padding-bottom: 5px;
 }
 
 .comment_author { 

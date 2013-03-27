@@ -25,7 +25,9 @@
 			</span>
 		<% end %>
 		<br />
-		<%= render_markdown(c.body) %>
+		<span class = "comment_body">
+			<%= render_markdown(c.body) %>
+		</span>
 	</div>
 <% end %>
 
