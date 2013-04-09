@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic  :secure => true,
               :filetype => :gif
+              
+  before_save :default_values
   
   #Adds the ability to give users roles
   rolify
@@ -32,6 +34,10 @@ class User < ActiveRecord::Base
 
   def api_hash
     { email: self.email, name: self.name }
+  end
+  
+  def default_values
+    self.active ||= true
   end
   
   

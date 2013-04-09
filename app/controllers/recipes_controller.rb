@@ -63,7 +63,7 @@ class RecipesController < ApplicationController
   
   # GET /recipes/1/personalize
   def personalize
-    @recipe = Recipe.new
+    @recipe = Recipe.find(params[:id])
     @recipe.parent_id = params[:id];
 
     is_logged_in = current_user != nil
