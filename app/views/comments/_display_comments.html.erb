@@ -1,6 +1,7 @@
 <h3> Comment </h3>
 
-<%= form_for :comment, :url => { :action => 'add_comment', :controller => 'comments' } do |f|%>
+<!-- Comment Form -->
+<%= form_for :comment, :url => { :action => 'create', :controller => 'comments' } do |f|%>
 
   <%= f.text_area(:body, :style => 'width:100%', :rows => 8) %> <br />
   <p align="right"><%= f.submit ' Submit ' %></p>
@@ -9,7 +10,7 @@
   <%= f.hidden_field :commentable_id, :value => params[:id] %>
 <% end %>
 
-<!-- fetch_comments is in the comment helper -->
+<!-- Comment Display -->
 <% comments = fetch_comments(params[:controller], params[:id]) %>
 
 <% comments.each do |c| %>
@@ -21,6 +22,7 @@
 		</span> 
 		<% if(current_user != nil && c.user_id == current_user.id) %>
 			<span class="comment_options">
+				<%= link_to raw('<i class="icon-edit"></i>'), edit_comment_path(c) %> 
 				<%= link_to raw('<i class="icon-remove-sign"></i>'), comment_path(c) , :confirm => "Are you sure?", :method => :delete %>
 			</span>
 		<% end %>
@@ -34,3 +36,4 @@
 <span class = "apple_pagination">
 	<%= will_paginate comments %>
 </span>
+

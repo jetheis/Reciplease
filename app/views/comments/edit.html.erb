@@ -1,0 +1,8 @@
+<h1>Edit Comment</h1>
+
+<%= form_for @comment, :url => { :action => "update", :controller => 'comments' } do |f| %>
+  <%= f.text_area :body, :required => true, :style => 'width:50%', :rows => 8 %> <br/>
+  <%= f.submit ' Submit ' =%>
+<% end %>
+
+<%= link_to_function "Back", "history.back()" %>

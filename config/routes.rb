@@ -12,7 +12,6 @@ Reciplease::Application.routes.draw do
   match "/recipes/:id/history" => "recipes#history", :as => :recipe_history
   
   resources :comments
-  post 'comments/add_comment'
 
   resources :ratings, :only => [:create, :update, :destroy]
   
