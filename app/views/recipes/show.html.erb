@@ -14,6 +14,8 @@
 		<h5>Instructions</h5>
 		<p><%= render_markdown(@recipe.instructions)  %></p>
 		
+		<br />
+		
 		<% if @recipe.owner == current_user %>
 		  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 		<% else %>
