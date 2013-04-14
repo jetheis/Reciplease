@@ -39,10 +39,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if is_logged_in
         format.html # new.html.erb
-        #Should not be responding here we only need to respond to a put or post of a new recipe
       else
         format.html { redirect_to recipes_url, alert: "You need to login to create recipes." }
-        #Again not our concern the application using this needs to handle that
       end
     end
   end
@@ -72,10 +70,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if is_logged_in
         format.html # personalize.html.erb
-        #Only need  to respond to a put or post
       else
         format.html { redirect_to recipe_path(@recipe.parent_id), alert: "You need to login to personalize recipes." }
-        #We dont need to handle this
       end
       
       if is_owner
