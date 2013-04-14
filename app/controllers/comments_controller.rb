@@ -10,10 +10,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # Create a comment with the user submitted content
     @comment = Comment.new(params[:comment])
-    
-    # Assign this comment to the logged in user
     if(current_user == nil)
       flash[:alert] = "You must be logged in to create comment"
       return_to_commentable(@comment);
@@ -30,7 +27,6 @@ class CommentsController < ApplicationController
     end
   end
   
-  # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
   end

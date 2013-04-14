@@ -1,31 +1,15 @@
 class Recipe < ActiveRecord::Base
-  #TODO: BAD SMELL-ROB Too many comments, code could easily be clearer, and there is dead commented code
-
+  acts_as_commentable
   
-  ##Validations
-  validates_presence_of :name, :owner, :ingredients, :description, :instructions
-  
-  # Relationships
   belongs_to :owner, :class_name => "User"
   has_many :ratings
   has_and_belongs_to_many :favoring_users, :class_name => "User", :join_table => :fav_recipes
   belongs_to :parent, :class_name => "Recipe"
   has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
 
-  # Commentable
-  acts_as_commentable
-
-  def average_rating
-    @score = 0
-    self.ratings.each do |rating|
-        @score = @score + rating.score
-    end
-    @count = self.ratings.size
-    return @score.to_f / @count.to_f
-  end
   
-  ## Accessibile attributes
 
+  validates_presence_of :name, :owner, :ingredients, :description, :instructions
   attr_accessible :name, :owner_id, :description, :instructions, :forks, :ingredients, :image, :parent_id
   
    has_attached_file :image, styles: {
@@ -34,10 +18,14 @@ class Recipe < ActiveRecord::Base
     medium: '300x300'
   }
   
-  #def to_param
-  #  "#{id}/#{name}"
-  #end
-  
+  def average_rating
+    @score = 0
+    self.ratings.each do |rating|
+        @score = @score + rating.score
+    end
+    @count = self.ratings.size
+    return @score.to_f / @count.to_f
+  end
   
   def self.api_rep
     Recipe.order("name ASC").all.map do |recipe|
@@ -50,5 +38,4 @@ class Recipe < ActiveRecord::Base
       id: self.id, name: self.name, description: self.description, instructions: self.instructions, owner_id: self.owner_id, parent_id: self.parent_id, picture: self.image
     }
   end
-
 end
