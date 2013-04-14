@@ -3,16 +3,16 @@ class User < ActiveRecord::Base
   gravtastic  :secure => true,
               :filetype => :gif
               
-  before_save :default_values
-  
-  #Adds the ability to give users roles
+  # Used to create user roles, which at this point, are unused.
   rolify
+              
+  before_save :default_values
   
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
   
   has_and_belongs_to_many :fav_recipes, :class_name => "Recipe", :join_table => :fav_recipes
-  has_many :recipes, :foreign_key => :owner_id
+  has_many :ratings, :recipes, :foreign_key => :owner_id
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -20,11 +20,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # ratings
-  has_many :ratings
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :name, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :name, :password, :password_confirmation, :remember_me, :bio
 
   def self.api_rep
     User.order("name ASC").all.map do |user|
@@ -39,6 +35,4 @@ class User < ActiveRecord::Base
   def default_values
     self.active ||= true
   end
-  
-  
 end
