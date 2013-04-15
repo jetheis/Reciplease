@@ -1,11 +1,24 @@
-<%= simple_form_for(@recipe) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-	
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<%= simple_form_for @recipe, :url => { :action => action }, :html => {:class => "nifty_form"} do |f| %>
+  <%= f.input :name, :label => 'Recipe name' %>
+  <%= f.label :Description %>
+  <%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
+  <%= f.label :Ingredients %>
+  <%= f.text_area :ingredients, :required => false, :cols => 30, :rows => 5 %>
+  <%= f.hidden_field :parent_id, :required => false %>
+  
+  <div class="control-group string required">
+	<%= f.label :instructions, :required => true %>
+	<%= f.text_area :instructions, :cols => 30, :rows => 5 %>
+  </div> 
+  
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div> <br />
+  
+  <% if defined?(submit_label) %>
+  	<%= f.button :submit, submit_label %>
+  <% else %>
+  	<%= f.button :submit %>
+  <% end %>
 <% end %>
