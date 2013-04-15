@@ -1,0 +1,21 @@
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= display_base_errors resource %>
+  <%= f.input :name, :autofocus => true %>
+  <%= f.input :email, :required => true %>
+  <% if has_password %>
+  	<%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+  	<%= f.input :password_confirmation, :required => false %>
+  <% else %>
+  	<%= f.input :password, :required => true %>
+  	<%= f.input :password_confirmation, :required => true %>
+  <% end %>
+  <%= f.label :Bio %>
+  <%= f.text_area :bio, :required => false, :cols => 30, :rows => 5 %>
+  <% if has_password %>
+  	<%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+  <% else %>
+  	<br /><!-- TODO generate more div tags -->
+  <% end %>
+  <%= f.button :submit, submit_label, :class => 'btn-primary' %>
+<% end %>
