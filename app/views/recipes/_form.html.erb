@@ -1,21 +1,23 @@
 <%= simple_form_for @recipe, :url => { :action => action }, :html => {:class => "nifty_form"} do |f| %>
-  <%= f.input :name, :label => 'Recipe name' %>
-  <%= f.label :Description %>
-  <%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
-  <%= f.label :Ingredients %>
-  <%= f.text_area :ingredients, :required => false, :cols => 30, :rows => 5 %>
-  <%= f.hidden_field :parent_id, :required => false %>
+  <%= f.error_notification %>
   
-  <div class="control-group string required">
+  <div class="form-inputs">
+    <%= f.input :name, :label => 'Recipe name' %>
+	<%= f.label :Description %>
+	<%= f.text_area :description, :required => false, :cols => 30, :rows => 5 %>
+	<%= f.label :Ingredients %>
+	<%= f.text_area :ingredients, :required => false, :cols => 30, :rows => 5 %>
+	<%= f.hidden_field :parent_id, :required => false %>
 	<%= f.label :instructions, :required => true %>
 	<%= f.text_area :instructions, :cols => 30, :rows => 5 %>
-  </div> 
+
+	<div class="field">
+		<%= f.label :image %>
+		<%= f.file_field :image %>
+	</div>
+  </div>
   
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div> <br />
-  
+  <br />
   <% if defined?(submit_label) %>
   	<%= f.button :submit, submit_label %>
   <% else %>
