@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414192229) do
+ActiveRecord::Schema.define(:version => 20130416170812) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -26,11 +26,6 @@ ActiveRecord::Schema.define(:version => 20130414192229) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
-  create_table "fav_recipes", :force => true do |t|
-    t.integer "user_id"
-    t.integer "recipe_id"
-  end
 
   create_table "ratings", :force => true do |t|
     t.integer  "score",      :null => false

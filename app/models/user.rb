@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
   
-  has_and_belongs_to_many :fav_recipes, :class_name => "Recipe", :join_table => :fav_recipes
   has_many :recipes, :foreign_key => :owner_id
   has_many :ratings
   

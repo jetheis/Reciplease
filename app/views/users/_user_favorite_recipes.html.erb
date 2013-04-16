@@ -1,6 +1,9 @@
 <div id="content">
-  <h3><%= @user.name %>'s <b>FAVORITE</b> Recipes</h3>
-  <% @user.fav_recipes.each do |recipe| %>
-    <%= render "recipes/thumbnail_block", :recipe => recipe %>
+  <h3><%= @user.name %>'s Favorite Recipes</h3>
+  <% @user.ratings.each do |rating| %>
+  	<% if rating.score == 5 %>
+  		<% recipe = Recipe.find(rating.recipe_id) %>
+    	<%= render "recipes/thumbnail_block", :recipe => recipe %>
+    <% end %>
   <% end %>
 </div>

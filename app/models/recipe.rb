@@ -3,7 +3,6 @@ class Recipe < ActiveRecord::Base
   
   belongs_to :owner, :class_name => "User"
   has_many :ratings
-  has_and_belongs_to_many :favoring_users, :class_name => "User", :join_table => :fav_recipes
   belongs_to :parent, :class_name => "Recipe"
   has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
 
