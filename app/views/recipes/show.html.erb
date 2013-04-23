@@ -15,7 +15,7 @@
 		<p><%= render_markdown(@recipe.instructions)  %></p>
 		
 		<br />
-		<%= social_share_button_tag(@recipe.name) %>
+		<%= social_share_button_tag("Check out this awesome recipe!\n\n#{@recipe.name}") %>
 		<br />
 		
 		<% if @recipe.owner == current_user %>
