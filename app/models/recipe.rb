@@ -6,8 +6,6 @@ class Recipe < ActiveRecord::Base
   belongs_to :parent, :class_name => "Recipe"
   has_many :forks, :class_name => "Recipe", :foreign_key => "parent_id"
 
-  
-
   validates_presence_of :name, :owner, :ingredients, :description, :instructions
   attr_accessible :name, :owner_id, :description, :instructions, :forks, :ingredients, :image, :parent_id
   
@@ -29,6 +27,14 @@ class Recipe < ActiveRecord::Base
   def self.api_rep
     Recipe.order("name ASC").all.map do |recipe|
       recipe.api_hash
+    end
+  end
+  
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
     end
   end
   
