@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # Used to create user roles, which at this point, are unused.
   rolify
               
-  before_save :default_values
+  before_save :default_values, on: :create
   
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :name, :password, :password_confirmation, :remember_me, :bio
+  attr_accessible :email, :name, :password, :password_confirmation, :remember_me, :active, :bio
 
   def self.api_rep
     User.order("name ASC").all.map do |user|
@@ -31,8 +31,10 @@ class User < ActiveRecord::Base
   def api_hash
     { email: self.email, name: self.name }
   end
-  
+
   def default_values
-    self.active ||= true
+    if self.active == nil
+      self.active = true
+    end
   end
 end
