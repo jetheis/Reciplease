@@ -1,3 +1,5 @@
+
+
 <div class="row">
   <div class="span5"><h1>Listing recipes</h1></div>
   <div class="span5"></div>
@@ -5,10 +7,16 @@
 </div>
 <div class="row-fluid">
   <ul class="thumbnails">
-    <% @recipes.each do |recipe| %>
+  	
+    <% paginated_recipes = @recipes.paginate(:page => params[:page], :per_page => 12) %>
+    <% paginated_recipes.each do |recipe| %>
       <% if recipe.owner.active %>
       	<%= render "recipes/thumbnail_block", :recipe => recipe %>
       <% end%>
     <% end %>
   </ul>
 </div>
+
+<span class = "apple_pagination">
+	<%= will_paginate paginated_recipes %>
+</span>

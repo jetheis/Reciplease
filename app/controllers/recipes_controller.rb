@@ -127,10 +127,13 @@ class RecipesController < ApplicationController
     is_logged_in = current_user != nil
     is_owner = @recipe.owner == current_user
     if is_logged_in and is_owner
-      children = Recipe.where(:parent_id => :id)
+      children = Recipe.where(:parent_id => params[:id])
       children.each do |child|
         child.update_attribute(:parent_id, @recipe.parent_id)
         child.save
+      end
+      Rating.where(:recipe_id => params[:id]).each do |rating|
+        rating.destroy
       end
       @recipe.destroy
     end  
