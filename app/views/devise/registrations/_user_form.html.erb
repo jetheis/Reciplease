@@ -1,9 +1,15 @@
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+
+<% method = :post %>
+<% if registered %>
+	<% method = :put %>
+<% end %>
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => method, :class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
   <%= display_base_errors resource %>
   <%= f.input :name, :autofocus => true %>
   <%= f.input :email, :required => true %>
-  <% if has_password %>
+  <% if registered %>
   	<%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
   	<%= f.input :password_confirmation, :required => false %>
   <% else %>
@@ -12,7 +18,7 @@
   <% end %>
   <%= f.label :Bio %>
   <%= f.text_area :bio, :required => false, :cols => 30, :rows => 5 %>
-  <% if has_password %>
+  <% if registered %>
   	<%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
   <% else %>
   	<br /><!-- TODO generate more div tags -->
