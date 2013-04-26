@@ -17,11 +17,16 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json do
-        render json: @recipe.api_hash
+    if @recipe.owner.active and @recipe != nil
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json do
+          render json: @recipe.api_hash
+        end
       end
+    else
+      flash[:notice] = "Recipe does not exist!"
+      redirect_to recipes_path
     end
   end
 

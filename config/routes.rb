@@ -20,4 +20,6 @@ Reciplease::Application.routes.draw do
   end
   root :to => "home#welcome"
   
+  match "/gettingStarted" => "home#gettingStarted", :as => :gettingStarted
+  
 end
