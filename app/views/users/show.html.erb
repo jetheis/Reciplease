@@ -45,3 +45,10 @@
 		<%= social_share_button_tag("Check out #{@user.name}`s profile on Reciplease!") %>
 	</div>
 </div>
+
+<div class="row spacer">
+	<div class = "span7">
+		<%= render 'comments/display_comments'%>
+		<%= yield %>
+	</div>
+</div>
