@@ -3,11 +3,17 @@
 </div>
 <div class="row-fluid">
 	<% recipe  = Recipe.find(params[:id]) %>
-	<!-- TODO: Find the complete history -->
+	<% history = [] %>
+	<% i = 0 %>
+
 	<% while recipe.parent != nil %>
-		<% p = Recipe.find(recipe.parent) %>
-		<%= render "recipes/thumbnail_block", :recipe => p %>
-		<% recipe = p %>
+		<% history << Recipe.find(recipe.parent) %>
+		<% recipe = recipe.parent %>
+    <% end %>
+    
+    <!-- TODO: Add some nice connections betwen recipes -->
+    <% history.reverse.each do |r| %>
+    	<%= render "recipes/thumbnail_block", :recipe => r %>
     <% end %>
   </ul>
 </div>
