@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
         end
       end
     else
-      flash[:notice] = "Recipe does not exist!"
+      flash[:notice] = "Recipe no longer exists!"
       redirect_to recipes_path
     end
   end

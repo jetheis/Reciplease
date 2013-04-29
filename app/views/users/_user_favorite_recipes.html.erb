@@ -3,7 +3,9 @@
   <% @user.ratings.each do |rating| %>
   	<% if rating.score == 5 %>
   		<% recipe = Recipe.find(rating.recipe_id) %>
-    	<%= render "recipes/thumbnail_block", :recipe => recipe %>
+  		<% if recipe.owner.active %>
+    		<%= render "recipes/thumbnail_block", :recipe => recipe %>
+    	<% end %>
     <% end %>
   <% end %>
 </div>
