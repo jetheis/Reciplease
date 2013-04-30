@@ -5,7 +5,10 @@
     
     <h3 style="display:inline"><%= recipe.name %></h3>
     <p style="display:inline">by <%= link_to recipe.owner.name, recipe.owner, :style=>"text-decoration: none" %></p>
-    <p><%= recipe.description %></p>
+
+	<div style="word-wrap: break-word;">
+    <p><%= truncate recipe.description, length: 100 %></p>
+    </div>
     
     <% if recipe.owner == current_user %>
       <%= link_to 'Edit', edit_recipe_path(recipe), :style=>"text-decoration: none" %>
