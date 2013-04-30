@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   gravtastic  :secure => true,
               :filetype => :gif
               
+  acts_as_commentable
+              
   # Used to create user roles, which at this point, are unused.
   rolify
               

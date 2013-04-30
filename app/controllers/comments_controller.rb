@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     if(current_user == nil)
-      flash[:alert] = "You must be logged in to create comment"
+      flash[:alert] = "You must be logged in to comment"
       return_to_commentable(@comment);
     elsif(@comment.body == "")
       flash[:alert] = "You cannot post an empty comment"
