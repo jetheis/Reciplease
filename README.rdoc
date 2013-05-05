@@ -1,12 +1,12 @@
 Team Reciplease:
 
-Rob Wagner
-David Savrda
-Robbie Cooper
-Alex Petitjean
-Ben Paul
+* Rob Wagner
+* David Savrda
+* Robbie Cooper
+* Alex Petitjean
+* Ben Paul
 
 Clients:
 
-Jimmy Theis
-Bryan Watts
+* Jimmy Theis
+* Bryan Watts
